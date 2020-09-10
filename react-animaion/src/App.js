@@ -18,6 +18,12 @@ function App() {
                     }}
                     mountOnEnter
                     unmountOnExit
+                    onEnter={() => console.log('OnEnter')}
+                    onEntering={() => console.log('onEntering')}
+                    onEntered={() => console.log('onEntered')}
+                    onExit={() => console.log('onExit')}
+                    onExiting={() => console.log('onExiting')}
+                    onExited={() => console.log('onExited')}
                 >
                     {state => <div className={`square blue ${state}`}> {toggle.toString()} {state}</div>}
                 </Transition>
