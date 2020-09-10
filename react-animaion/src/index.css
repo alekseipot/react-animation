@@ -47,6 +47,7 @@ code {
     background: cornflowerblue;
     animation: square 500ms ease-in alternate-reverse;
 }
+
 .square.exited {
     opacity: 0;
     transform: translateY(-100px);
@@ -54,6 +55,32 @@ code {
 
 .square.orange {
     background: coral;
+}
+
+.os-enter {
+    opacity: 0;
+}
+
+.os-enter-active {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.os-enter-done {
+    transform: translateX(0);
+}
+
+.os-exit {
+    opacity: 1;
+}
+
+.os-exit-active {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.os-exi-done {
+    opacity: 0;
 }
 
 @keyframes square {
