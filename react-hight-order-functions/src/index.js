@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
@@ -9,24 +9,27 @@ const starWarsChars = [
     {name: 'Обиван Кеноби', side: 'light'}
 ]
 
-const App = ({list, side}) => {
+const App = ({list}) => (
+    <ul>
+        {list.map((char, index) => {
+            return (
+                <li key={char.name + index}>
+                    <strong>{char.name}</strong> - {char.side}
+                </li>
+            )
+        })
+        }
+    </ul>)
+
+const withFilteredProps = Component => ({list, side}) => {
     const filteredList = list.filter(char => char.side === side)
-    return (
-        <ul>
-            {filteredList.map((char, index) => {
-                return (
-                    <li key={char.name + index}>
-                        <strong>{char.name}</strong> - {char.side}
-                    </li>
-                )
-            })
-            }
-        </ul>)
+    return <Component list={filteredList}/>
 }
 
+const FilteredList = withFilteredProps(App)
 ReactDOM.render(
     <React.StrictMode>
-        <App list={starWarsChars} side='dark'/>
+        <FilteredList list={starWarsChars} side='light'/>
     </React.StrictMode>,
     document.getElementById('root')
 );
